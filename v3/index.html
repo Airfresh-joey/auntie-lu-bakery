@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auntie Lu | Artisan Sourdough Bread</title>
+    <title>Auntie Lu's Bakery | Artisan Sourdough & Custom Cake Pops - San Diego</title>
+    <meta name="description" content="Handcrafted artisan sourdough bread and custom cake pops in San Diego. Small batch, made with love. Pickup near Waring & Zion Rd (92120).">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
             --charcoal: #2D2A26;
             --soft-brown: #A67C52;
             --accent: #C4956A;
+            --blush: #E8D5C4;
             --text-primary: #2D2A26;
             --text-secondary: #6B6560;
         }
@@ -274,15 +276,16 @@
         /* Floating Elements */
         .float-element {
             position: absolute;
-            opacity: 0.1;
-            font-size: 8rem;
+            opacity: 0.08;
+            font-size: 10rem;
             font-family: 'Playfair Display', serif;
             color: var(--wheat);
             z-index: 0;
+            pointer-events: none;
         }
 
-        .float-1 { top: 10%; left: 5%; }
-        .float-2 { bottom: 15%; right: 5%; }
+        .float-1 { top: 10%; left: 2%; }
+        .float-2 { bottom: 10%; right: 2%; }
 
         /* Stats Bar */
         .stats-bar {
@@ -434,6 +437,95 @@
             color: var(--text-secondary);
         }
 
+        /* Two Worlds Section */
+        .two-worlds {
+            padding: 6rem 4%;
+            background: var(--blush);
+        }
+
+        .two-worlds-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .two-worlds-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .two-worlds-header h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--dark-crust);
+            margin-bottom: 1rem;
+        }
+
+        .two-worlds-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .worlds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .world-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+
+        .world-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .world-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .world-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .world-card:hover .world-image img {
+            transform: scale(1.05);
+        }
+
+        .world-content {
+            padding: 2.5rem;
+        }
+
+        .world-content h3 {
+            font-size: 1.75rem;
+            color: var(--dark-crust);
+            margin-bottom: 1rem;
+        }
+
+        .world-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .world-price {
+            display: inline-block;
+            background: var(--cream);
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark-crust);
+            margin-bottom: 1.5rem;
+        }
+
         /* Products Section */
         .products-section {
             padding: 8rem 4%;
@@ -455,6 +547,34 @@
         .section-header p {
             color: var(--text-secondary);
             font-size: 1.1rem;
+        }
+
+        /* Product Categories */
+        .product-category {
+            margin-bottom: 5rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .category-header h3 {
+            font-size: 1.75rem;
+            color: var(--dark-crust);
+        }
+
+        .category-badge {
+            background: var(--wheat);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
         .products-grid {
@@ -544,6 +664,12 @@
             font-size: 1.35rem;
             font-weight: 600;
             color: var(--dark-crust);
+        }
+
+        .product-price small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-secondary);
         }
 
         .add-to-cart {
@@ -667,77 +793,69 @@
             line-height: 1.7;
         }
 
-        /* Testimonials Section */
-        .testimonials-section {
+        /* FAQ Section */
+        .faq-section {
             padding: 8rem 4%;
             background: var(--warm-white);
         }
 
-        .testimonials-container {
-            max-width: 1200px;
+        .faq-container {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
+        .faq-item {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .testimonial-card.visible {
-            animation: fadeUp 0.6s ease forwards;
-        }
-
-        .testimonial-stars {
-            color: var(--wheat);
-            font-size: 1.2rem;
+            border-radius: 16px;
             margin-bottom: 1rem;
-            letter-spacing: 0.1em;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
 
-        .testimonial-text {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
+        .faq-question {
+            padding: 1.5rem 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .author-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+        .faq-question:hover {
             background: var(--cream);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
         }
 
-        .author-name {
+        .faq-question h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--dark-crust);
-            margin-bottom: 0.2rem;
         }
 
-        .author-location {
-            font-size: 0.85rem;
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--wheat);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .faq-answer p {
             color: var(--text-secondary);
+            line-height: 1.8;
         }
 
         /* CTA Section */
@@ -922,6 +1040,10 @@
                 height: 400px;
             }
 
+            .worlds-grid {
+                grid-template-columns: 1fr;
+            }
+
             .process-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -974,10 +1096,6 @@
                 gap: 3rem;
             }
 
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1020,13 +1138,14 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <a href="/" class="logo">Auntie Lu</a>
+        <a href="/" class="logo">Auntie Lu's</a>
         <ul class="nav-links">
             <li><a href="#story">Our Story</a></li>
-            <li><a href="#breads">Breads</a></li>
+            <li><a href="#products">Order</a></li>
             <li><a href="#process">How It Works</a></li>
+            <li><a href="#faq">FAQs</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="/order" class="nav-cta">Order Now</a></li>
+            <li><a href="#products" class="nav-cta">Order Now</a></li>
         </ul>
         <div class="nav-toggle">
             <span></span>
@@ -1044,20 +1163,20 @@
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
-                    <span>🌾</span> Small Batch. Big Love.
+                    <span>🏠</span> San Diego Home Bakery
                 </div>
                 <h1>
-                    Bread Made
-                    <span>the Old Way</span>
+                    Sourdough & Sweets
+                    <span>Made with Love</span>
                 </h1>
                 <p class="hero-description">
-                    Handcrafted artisan sourdough, made with time-honored traditions, 
-                    wild-fermented starters, and the kind of patience that turns flour 
-                    and water into something extraordinary.
+                    From slow-fermented artisan sourdough to playful custom cake pops, 
+                    Auntie Lu's Bakery brings homemade goodness to your celebrations 
+                    and everyday moments.
                 </p>
                 <div class="hero-buttons">
-                    <a href="/order" class="btn btn-primary">
-                        Order Fresh Bread
+                    <a href="#products" class="btn btn-primary">
+                        Browse & Order
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a href="#story" class="btn btn-secondary">
@@ -1075,20 +1194,20 @@
     <section class="stats-bar">
         <div class="stats-container">
             <div class="stat-item fade-in">
-                <div class="stat-number">24+</div>
-                <div class="stat-label">Hour Fermentation</div>
+                <div class="stat-number">2022</div>
+                <div class="stat-label">Founded</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">24h+</div>
+                <div class="stat-label">Slow Fermented</div>
             </div>
             <div class="stat-item fade-in">
                 <div class="stat-number">100%</div>
-                <div class="stat-label">Wild Yeast</div>
-            </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Simple Ingredients</div>
+                <div class="stat-label">Homemade</div>
             </div>
             <div class="stat-item fade-in">
                 <div class="stat-number">∞</div>
-                <div class="stat-label">Love in Every Loaf</div>
+                <div class="stat-label">Love in Every Bite</div>
             </div>
         </div>
     </section>
@@ -1098,25 +1217,25 @@
         <div class="story-container">
             <div class="story-images">
                 <img class="story-img story-img-1" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&h=700&fit=crop" alt="Baker kneading dough">
-                <img class="story-img story-img-2" src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&h=400&fit=crop" alt="Fresh baked loaves">
+                <img class="story-img story-img-2" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&h=400&fit=crop" alt="Colorful cake pops">
             </div>
             <div class="story-content fade-in">
                 <div class="section-label">Our Story</div>
-                <h2>A Family Recipe, Shared With Love</h2>
+                <h2>Welcome to Auntie Lu's Kitchen!</h2>
                 <p>
-                    It started in Auntie Lu's kitchen - flour dusting every surface, 
-                    the smell of fresh bread filling the house, and a promise to never 
-                    rush what takes time to make right.
+                    Like many great ideas, Auntie Lu's Bakery started in my home kitchen. 
+                    In 2022, I discovered the ancient, meditative process of sourdough baking. 
+                    The science, the patience, and the incredibly rewarding crust and crumb 
+                    of a perfectly proofed loaf immediately captured my heart.
                 </p>
                 <p>
-                    Every loaf we bake carries that same philosophy. We use a 
-                    wild-fermented starter that's been nurtured for years, 
-                    locally sourced flour, and nothing artificial. Ever.
+                    Baking sourdough quickly evolved from a hobby into a much-needed creative 
+                    outlet - a way to step away from the daily grind and create something truly nourishing.
                 </p>
                 <p>
-                    Our bread takes 24-48 hours to make. That's not a selling point - 
-                    that's just how long it takes to do it properly. Some things 
-                    can't be rushed, and we think you can taste the difference.
+                    While the sourdough feeds the soul, the cake pops feed the party! 
+                    I found a different kind of joy in transforming simple cake into beautifully 
+                    designed, perfectly dipped pop art that brings instant smiles to any gathering.
                 </p>
                 <div class="story-signature">
                     <div class="signature-name">Auntie Lu</div>
@@ -1126,103 +1245,144 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section" id="breads">
-        <div class="section-header fade-in">
-            <div class="section-label">Our Breads</div>
-            <h2>Baked Fresh for You</h2>
-            <p>Each loaf is made to order. We bake, you pick up - that's as fresh as it gets.</p>
+    <!-- Two Worlds Section -->
+    <section class="two-worlds">
+        <div class="two-worlds-container">
+            <div class="two-worlds-header fade-in">
+                <div class="section-label">What We Make</div>
+                <h2>From Hearth to Handle</h2>
+                <p>Two passions, one bakery. Rustic sourdough for the soul, playful cake pops for the celebration.</p>
+            </div>
+            <div class="worlds-grid">
+                <div class="world-card fade-in">
+                    <div class="world-image">
+                        <img src="https://images.unsplash.com/photo-1585478259715-4d3ca5db690a?w=700&h=500&fit=crop" alt="Artisan Sourdough">
+                    </div>
+                    <div class="world-content">
+                        <h3>Artisan Sourdough</h3>
+                        <p>Slow-fermented with wild yeast, hand-shaped, and baked to golden perfection. Our sourdough is the real deal - no shortcuts, no compromises.</p>
+                        <span class="world-price">Starting at $16</span>
+                        <br><br>
+                        <a href="#bread-section" class="btn btn-primary">Order Bread</a>
+                    </div>
+                </div>
+                <div class="world-card fade-in">
+                    <div class="world-image">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=700&h=500&fit=crop" alt="Custom Cake Pops">
+                    </div>
+                    <div class="world-content">
+                        <h3>Custom Cake Pops</h3>
+                        <p>Perfectly dipped pop art for any occasion. From classic designs to photo pops with your custom image - if you can picture it, we can popify it!</p>
+                        <span class="world-price">$40-60 per dozen</span>
+                        <br><br>
+                        <a href="#cakepop-section" class="btn btn-primary">Order Cake Pops</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="products-grid">
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1585478259715-4d3ca5db690a?w=600&h=500&fit=crop" alt="Classic Sourdough">
-                    <span class="product-badge">Best Seller</span>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-header fade-in">
+            <div class="section-label">Order</div>
+            <h2>Fresh From the Oven</h2>
+            <p>Everything is made to order - as fresh as it gets. Pickup only in San Diego (92120).</p>
+        </div>
+
+        <!-- Bread Category -->
+        <div class="product-category" id="bread-section">
+            <div class="category-header">
+                <h3>🍞 Sourdough Breads</h3>
+                <span class="category-badge">Wild Fermented</span>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1620921568790-c26b0cd85bfa?w=600&h=500&fit=crop" alt="Sourdough Dinner Rolls">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sourdough Dinner Rolls</h3>
+                        <p class="product-description">Perfect for gatherings. 12 pillowy, golden-crusted dinner rolls with that signature sourdough tang.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$16 <small>/ dozen</small></span>
+                            <button class="add-to-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h3 class="product-name">Classic Sourdough</h3>
-                    <p class="product-description">Our signature loaf. 48-hour fermentation, golden crust, open crumb. Perfect for everything.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$12</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585478259715-4d3ca5db690a?w=600&h=500&fit=crop" alt="Classic Sourdough Loaf">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Classic Sourdough Loaf</h3>
+                        <p class="product-description">Our signature country loaf. Crispy crust, open crumb, 24+ hours of slow fermentation.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$14</span>
+                            <button class="add-to-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?w=600&h=500&fit=crop" alt="Seeded Multigrain">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Seeded Multigrain</h3>
-                    <p class="product-description">Packed with sunflower, flax, sesame, and pumpkin seeds. Hearty, healthy, delicious.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$14</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
+        </div>
+
+        <!-- Cake Pops Category -->
+        <div class="product-category" id="cakepop-section">
+            <div class="category-header">
+                <h3>🍭 Cake Pops</h3>
+                <span class="category-badge">Custom Designs</span>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=500&fit=crop" alt="Classic Cake Pops">
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Classic Cake Pops</h3>
+                        <p class="product-description">Beautifully designed, perfectly dipped. Choose your colors and flavors for any celebration.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$40 <small>/ dozen</small></span>
+                            <button class="add-to-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=600&h=500&fit=crop" alt="Rosemary Olive Oil">
-                    <span class="product-badge">New</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Rosemary Olive Oil</h3>
-                    <p class="product-description">Fresh rosemary folded into olive oil-enriched dough. Incredible with soup or on its own.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$14</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=500&fit=crop" alt="Custom Cake Pops">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Custom Design Pops</h3>
+                        <p class="product-description">Themed designs, character shapes, holiday specials - bring your vision to life!</p>
+                        <div class="product-footer">
+                            <span class="product-price">$45-60 <small>/ dozen</small></span>
+                            <button class="add-to-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1620921568790-c26b0cd85bfa?w=600&h=500&fit=crop" alt="Cinnamon Raisin">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Cinnamon Raisin</h3>
-                    <p class="product-description">Sweet swirls of cinnamon and plump raisins. Perfect toasted with butter.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$13</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1486427944544-d2c6128c5d57?w=600&h=500&fit=crop" alt="Photo Pops">
+                        <span class="product-badge">Premium</span>
                     </div>
-                </div>
-            </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&h=500&fit=crop" alt="Focaccia">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Garden Focaccia</h3>
-                    <p class="product-description">Fluffy Italian flatbread topped with cherry tomatoes, olives, and fresh herbs.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$16</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=600&h=500&fit=crop" alt="Baguettes">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Baguette Duo</h3>
-                    <p class="product-description">Two perfectly crispy baguettes. Crackly crust, soft interior, classic shape.</p>
-                    <div class="product-footer">
-                        <span class="product-price">$10</span>
-                        <button class="add-to-cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                        </button>
+                    <div class="product-info">
+                        <h3 class="product-name">Photo Pops</h3>
+                        <p class="product-description">Edible images of your photo, logo, or custom design on each pop. Minimum 2 dozen order.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$50 <small>/ dozen</small></span>
+                            <button class="add-to-cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1233,85 +1393,104 @@
     <section class="process-section" id="process">
         <div class="section-header fade-in">
             <div class="section-label">How It Works</div>
-            <h2>From Our Oven to Your Table</h2>
-            <p>Fresh bread made just for you, ready when you are.</p>
+            <h2>From Order to Pickup</h2>
+            <p>Simple process, delicious results. Made fresh just for you.</p>
         </div>
         <div class="process-steps">
             <div class="process-step fade-in">
                 <div class="step-icon">
-                    🛒
+                    💬
                     <span class="step-number">1</span>
                 </div>
-                <h3>Order Online</h3>
-                <p>Choose your breads and pick your preferred pickup day. We bake to order - no sitting on shelves.</p>
+                <h3>Contact Us</h3>
+                <p>Use our Contact form to reach out. We'll send you a detailed order form to customize your request.</p>
             </div>
             <div class="process-step fade-in">
                 <div class="step-icon">
-                    🌾
+                    📝
                     <span class="step-number">2</span>
                 </div>
-                <h3>We Source & Mix</h3>
-                <p>Fresh ingredients, wild-fermented starter, and time-tested recipes come together.</p>
+                <h3>Confirm & Pay</h3>
+                <p>Once we finalize your order details, you'll receive an invoice with payment options. Full payment secures your date.</p>
             </div>
             <div class="process-step fade-in">
                 <div class="step-icon">
                     🔥
                     <span class="step-number">3</span>
                 </div>
-                <h3>Slow Baked</h3>
-                <p>24-48 hours of fermentation, hand-shaped, and baked in small batches to golden perfection.</p>
+                <h3>We Bake Fresh</h3>
+                <p>Your order is made from scratch with love. Sourdough gets 24+ hours of fermentation for perfect flavor.</p>
             </div>
             <div class="process-step fade-in">
                 <div class="step-icon">
                     🚗
                     <span class="step-number">4</span>
                 </div>
-                <h3>Fresh Pickup</h3>
-                <p>Grab your still-warm bread at our pickup location. Straight from the oven to your hands.</p>
+                <h3>Pickup in SD</h3>
+                <p>Grab your fresh goodies near Waring & Zion Rd (92120). Exact address sent in your confirmation email.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="testimonials-container">
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
             <div class="section-header fade-in">
-                <div class="section-label">Love Letters</div>
-                <h2>What People Are Saying</h2>
+                <div class="section-label">Questions</div>
+                <h2>Frequently Asked</h2>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"This is the bread I've been searching for my whole life. The crust, the crumb, the flavor - it's perfect. I can't buy grocery store bread anymore."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">👩</div>
-                        <div>
-                            <div class="author-name">Sarah M.</div>
-                            <div class="author-location">San Diego, CA</div>
-                        </div>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Do you deliver or ship?</h4>
+                    <span class="faq-icon">+</span>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"My family fights over the last slice. We've started ordering two loaves every week just to keep the peace. Absolutely incredible."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">👨</div>
-                        <div>
-                            <div class="author-name">Michael T.</div>
-                            <div class="author-location">La Jolla, CA</div>
-                        </div>
-                    </div>
+                <div class="faq-answer">
+                    <p>Auntie Lu's Bakery is pickup only at this time! We're located in San Diego (92120) near Waring Rd and Zion Rd.</p>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"I'm gluten-sensitive but tried Auntie Lu's sourdough anyway. The long fermentation makes it so much easier to digest. Game changer!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">👩</div>
-                        <div>
-                            <div class="author-name">Jessica L.</div>
-                            <div class="author-location">Coronado, CA</div>
-                        </div>
-                    </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>What is the pickup address?</h4>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pickups are near Waring Rd and Zion Rd in San Diego, CA (92120). The exact address will be provided in your confirmation email the Monday of your scheduled pickup week.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>How do cake pops come packaged?</h4>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Cake pops are individually wrapped with allergy info noted on the back, and packaged laying flat in a windowed pastry box by default. For an additional fee, you can upgrade to a windowed cake pop carrier that doubles as a display stand!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Do cake pops need to be refrigerated?</h4>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Cake pops can be stored at room temperature for up to 5 days, in the refrigerator for up to 2 weeks, or frozen for up to 3 months.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Do you cater to allergies?</h4>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Unfortunately, I'm unable to accommodate specific food allergies. All items are made in a kitchen that handles gluten, dairy, nuts, and eggs, so treats may contain traces of these allergens.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>How does payment work?</h4>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Full payment is required upfront to secure your order date. Once we've finalized your order details, I'll email you an invoice with multiple payment options.</p>
                 </div>
             </div>
         </div>
@@ -1320,10 +1499,10 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-container">
-            <h2>Ready for Real Bread?</h2>
-            <p>Order now and taste the difference that time, care, and a little love can make.</p>
-            <a href="/order" class="btn btn-primary">
-                Order Your Loaf
+            <h2>Ready to Order?</h2>
+            <p>Whether it's fresh sourdough for Sunday dinner or custom cake pops for your celebration, we can't wait to bake for you!</p>
+            <a href="#contact" class="btn btn-primary">
+                Contact Auntie Lu
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
@@ -1334,44 +1513,42 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="logo">Auntie Lu</a>
-                    <p>Small batch artisan sourdough, made with wild-fermented starters and time-honored traditions. Real bread takes time.</p>
+                    <a href="/" class="logo">Auntie Lu's</a>
+                    <p>Small batch artisan sourdough and custom cake pops, made with genuine care, high-quality ingredients, and a touch of homemade love. You're not just getting bread or a treat - you're getting a piece of my personal creative journey.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Instagram">📸</a>
                         <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="TikTok">🎵</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="/order">Order Online</a></li>
-                        <li><a href="#breads">Our Breads</a></li>
+                        <li><a href="#products">Order</a></li>
+                        <li><a href="#bread-section">Sourdough</a></li>
+                        <li><a href="#cakepop-section">Cake Pops</a></li>
                         <li><a href="#story">Our Story</a></li>
-                        <li><a href="#process">How It Works</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Help</h4>
                     <ul>
-                        <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/shipping">Shipping Info</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
-                        <li><a href="/wholesale">Wholesale</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="mailto:hello@auntielusbakery.com">Email Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Pickup Location</h4>
                     <ul>
                         <li><a href="#">San Diego, CA 92120</a></li>
-                        <li><a href="#">Near Waring & Zion</a></li>
-                        <li><a href="#">Pickup Days: Fri-Sun</a></li>
-                        <li><a href="mailto:hello@auntielu.com">hello@auntielu.com</a></li>
+                        <li><a href="#">Near Waring & Zion Rd</a></li>
+                        <li><a href="#">Address in confirmation</a></li>
+                        <li><a href="mailto:hello@auntielusbakery.com">hello@auntielusbakery.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Auntie Lu. All rights reserved. Made with flour, water, salt & love.</p>
+                <p>&copy; 2026 Auntie Lu's Bakery. All rights reserved. Made with flour, love & a little bit of magic.</p>
                 <div class="footer-links">
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
@@ -1398,6 +1575,22 @@
             navLinks.classList.toggle('active');
         });
 
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1407,7 +1600,6 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Stagger animations for multiple elements
                     setTimeout(() => {
                         entry.target.classList.add('visible');
                     }, index * 100);
@@ -1415,7 +1607,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in, .stat-item, .product-card, .process-step, .testimonial-card').forEach(el => {
+        document.querySelectorAll('.fade-in, .stat-item, .product-card, .process-step, .world-card').forEach(el => {
             observer.observe(el);
         });
 
@@ -1429,7 +1621,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile nav if open
                     navLinks.classList.remove('active');
                 }
             });
