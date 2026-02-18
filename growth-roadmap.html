@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auntie Lu's Bakery - Growth Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FDF8F3;
+            --wheat: #D4A853;
+            --crust: #8B5E34;
+            --dark-crust: #5C3D22;
+            --charcoal: #2D2A26;
+            --soft-brown: #A67C52;
+            --text-primary: #2D2A26;
+            --text-secondary: #6B6560;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--dark-crust) 0%, var(--crust) 100%);
+            color: white;
+            margin: -2rem -2rem 3rem -2rem;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .header .meta {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--dark-crust);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 .phase-badge {
+            background: var(--wheat);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            color: var(--crust);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Executive Summary Box */
+        .summary-box {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .summary-box h3 {
+            margin-top: 0;
+            color: var(--dark-crust);
+        }
+
+        .vision-statement {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--crust);
+            padding: 1rem;
+            border-left: 4px solid var(--wheat);
+            margin: 1rem 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        th {
+            background: var(--dark-crust);
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(212, 168, 83, 0.05);
+        }
+
+        /* Status badges */
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-done {
+            background: rgba(34, 197, 94, 0.15);
+            color: #16a34a;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: #d97706;
+        }
+
+        .status-none {
+            background: rgba(107, 101, 96, 0.15);
+            color: var(--text-secondary);
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .checklist li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--wheat);
+            border-radius: 4px;
+        }
+
+        .checklist li.done::before {
+            background: var(--wheat);
+            content: '✓';
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .card h4 {
+            color: var(--dark-crust);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--crust);
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--wheat);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            background: var(--wheat);
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-item h4 {
+            color: var(--dark-crust);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Highlight boxes */
+        .highlight {
+            background: rgba(212, 168, 83, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight h4 {
+            color: var(--dark-crust);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .metric .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-crust);
+        }
+
+        .metric .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--crust) 0%, var(--dark-crust) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            justify-content: center;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+            }
+            .header {
+                margin: 0 0 2rem 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Auntie Lu's Bakery</h1>
+            <p class="subtitle">Growth Roadmap & Next Steps</p>
+            <p class="meta">Prepared February 2026 | Joey Kercher / Humming Agent AI</p>
+        </header>
+
+        <!-- Executive Summary -->
+        <section>
+            <div class="summary-box">
+                <h3>Executive Summary</h3>
+                <p>Auntie Lu's Bakery has an incredible product and authentic story. This roadmap outlines how to transform a beloved home bakery into a thriving local business - with infrastructure ready to scale nationally.</p>
+                
+                <div class="vision-statement">
+                    "From San Diego's best-kept secret to a nationally recognized artisan bread brand."
+                </div>
+
+                <p><strong>The Approach:</strong> Build smart systems now that work for 10 orders/week AND 1,000 orders/week. Start local, think national.</p>
+            </div>
+
+            <h3>Current State</h3>
+            <table>
+                <tr>
+                    <th>Area</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Product Quality</td>
+                    <td><span class="status status-done">Excellent</span></td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><span class="status status-done">New Site Live</span></td>
+                </tr>
+                <tr>
+                    <td>Marketing</td>
+                    <td><span class="status status-none">None</span></td>
+                </tr>
+                <tr>
+                    <td>Email List</td>
+                    <td><span class="status status-none">None</span></td>
+                </tr>
+                <tr>
+                    <td>E-commerce</td>
+                    <td><span class="status status-none">Contact Form Only</span></td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td><span class="status status-pending">Pickup Only</span></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Phase 1 -->
+        <section>
+            <h2><span class="phase-badge">Phase 1</span> Foundation (Weeks 1-4)</h2>
+            <p>Get the basics right. Zero cost, maximum impact.</p>
+
+            <h3>Website & SEO</h3>
+            <ul class="checklist">
+                <li class="done">New modern website</li>
+                <li class="done">Real product photography</li>
+                <li>Connect auntielusbakery.com domain</li>
+                <li>Add email capture popup</li>
+                <li>Basic SEO setup (meta tags, schema)</li>
+            </ul>
+
+            <h3>Email List</h3>
+            <ul class="checklist">
+                <li>Set up Mailchimp (free tier)</li>
+                <li>Create welcome email sequence</li>
+                <li>Add "10% off first order" signup incentive</li>
+            </ul>
+
+            <div class="highlight">
+                <h4>Why email matters</h4>
+                <p>An email list is the #1 asset for a small food business. Social media algorithms change; email is direct access to customers you own forever.</p>
+            </div>
+
+            <h3>Google Business Profile</h3>
+            <ul class="checklist">
+                <li>Claim Google Business listing</li>
+                <li>Add photos, hours, products</li>
+                <li>Start collecting reviews</li>
+            </ul>
+
+            <table>
+                <tr>
+                    <th>Investment</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Domain (annual)</td>
+                    <td>$12</td>
+                </tr>
+                <tr>
+                    <td>Email tool</td>
+                    <td>$0 (free tier)</td>
+                </tr>
+                <tr>
+                    <td>Google Business</td>
+                    <td>$0</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>$12/year</strong></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Phase 2 -->
+        <section>
+            <h2><span class="phase-badge">Phase 2</span> Local Dominance (Weeks 5-12)</h2>
+            <p>Own San Diego before going national.</p>
+
+            <h3>Local SEO - The Multi-Page Strategy</h3>
+            <p>Build landing pages targeting every San Diego neighborhood:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Neighborhood Pages</h4>
+                    <p>Del Cerro, La Mesa, Mission Valley, Kensington, El Cajon, Santee...</p>
+                    <p class="price">50+ pages</p>
+                </div>
+                <div class="card">
+                    <h4>Product Pages</h4>
+                    <p>"Sourdough bread [area]", "Cake pops near me", "Custom cake pops San Diego"</p>
+                    <p class="price">100+ keywords</p>
+                </div>
+            </div>
+
+            <h3>Social Media Strategy</h3>
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Content</th>
+                </tr>
+                <tr>
+                    <td>Monday</td>
+                    <td>Fresh bake photo</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Behind-the-scenes / process</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Customer feature / cake pop showcase</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>"Order this week" reminder</td>
+                </tr>
+            </table>
+
+            <h3>Low-Hanging Fruit Marketing</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Free Tactics</h4>
+                    <p>Nextdoor posts, Facebook groups, Yelp listing, local food blogger outreach</p>
+                    <p class="price">$0</p>
+                </div>
+                <div class="card">
+                    <h4>Paid Ads (Optional)</h4>
+                    <p>Instagram/Facebook ads, Google Ads for "cake pops san diego"</p>
+                    <p class="price">$5-10/day</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 3 -->
+        <section>
+            <h2><span class="phase-badge">Phase 3</span> E-commerce & Systems (Weeks 8-16)</h2>
+            <p>Make ordering effortless.</p>
+
+            <h3>Online Ordering</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Recommended: Square Online</h4>
+                    <p>Free to start, 2.9% + 30c per transaction. Handles payments, orders, pickup scheduling.</p>
+                    <p class="price">$0/month</p>
+                </div>
+                <div class="card">
+                    <h4>Alternative: Shopify</h4>
+                    <p>More customization, better for scaling, built-in shipping options.</p>
+                    <p class="price">$29/month</p>
+                </div>
+            </div>
+
+            <h3>Systems to Build</h3>
+            <ul class="checklist">
+                <li>Order notifications (email + text)</li>
+                <li>Production calendar</li>
+                <li>Order cutoff times (e.g., order by Wed for Sat pickup)</li>
+                <li>Customer database & repeat buyer tracking</li>
+            </ul>
+        </section>
+
+        <!-- Phase 4 -->
+        <section>
+            <h2><span class="phase-badge">Phase 4</span> Scale & Ship Nationally (Month 4+)</h2>
+            <p>The big play: frozen sourdough shipped anywhere.</p>
+
+            <h3>The Frozen Bread Model</h3>
+            <div class="highlight">
+                <h4>How it works</h4>
+                <p>Bread is par-baked (80% done), flash frozen, and shipped in insulated boxes. Customer finishes baking at home in 10-15 minutes. Arrives "fresh from the oven" anywhere in the country.</p>
+            </div>
+
+            <h3>Shipping Economics</h3>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Insulated box</td>
+                    <td>$3-5</td>
+                </tr>
+                <tr>
+                    <td>Ice packs</td>
+                    <td>$1-2</td>
+                </tr>
+                <tr>
+                    <td>Packaging</td>
+                    <td>$1-2</td>
+                </tr>
+                <tr>
+                    <td>2-day shipping</td>
+                    <td>$15-25</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimum price point</strong></td>
+                    <td><strong>$35-40/loaf shipped</strong></td>
+                </tr>
+            </table>
+
+            <h3>National Landing Pages</h3>
+            <p>Build pages targeting every major city: "sourdough delivery Los Angeles", "artisan bread shipped to NYC", etc.</p>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="number">200+</div>
+                    <div class="label">City Pages</div>
+                </div>
+                <div class="metric">
+                    <div class="number">50</div>
+                    <div class="label">States</div>
+                </div>
+                <div class="metric">
+                    <div class="number">2-3</div>
+                    <div class="label">Day Shipping</div>
+                </div>
+                <div class="metric">
+                    <div class="number">$$$</div>
+                    <div class="label">Premium</div>
+                </div>
+            </div>
+
+            <h3>Subscription: "Bread Club"</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Starter</h4>
+                    <p>1 loaf per month</p>
+                    <p class="price">$45/mo</p>
+                </div>
+                <div class="card">
+                    <h4>Baker</h4>
+                    <p>2 loaves per month</p>
+                    <p class="price">$75/mo</p>
+                </div>
+                <div class="card">
+                    <h4>Family</h4>
+                    <p>4 loaves per month</p>
+                    <p class="price">$125/mo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics -->
+        <section>
+            <h2>Success Metrics</h2>
+
+            <h3>3 Months</h3>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="number">100+</div>
+                    <div class="label">Email Subs</div>
+                </div>
+                <div class="metric">
+                    <div class="number">500+</div>
+                    <div class="label">IG Followers</div>
+                </div>
+                <div class="metric">
+                    <div class="number">20+</div>
+                    <div class="label">Orders/Mo</div>
+                </div>
+                <div class="metric">
+                    <div class="number">4.8+</div>
+                    <div class="label">Google Rating</div>
+                </div>
+            </div>
+
+            <h3>12 Months</h3>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="number">2K+</div>
+                    <div class="label">Email Subs</div>
+                </div>
+                <div class="metric">
+                    <div class="number">5K+</div>
+                    <div class="label">IG Followers</div>
+                </div>
+                <div class="metric">
+                    <div class="number">100+</div>
+                    <div class="label">Orders/Mo</div>
+                </div>
+                <div class="metric">
+                    <div class="number">$5K+</div>
+                    <div class="label">Revenue/Mo</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Immediate Actions -->
+        <section>
+            <h2>Immediate Action Items</h2>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Connect auntielusbakery.com domain</td>
+                    <td>30 min</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Set up Google Business Profile</td>
+                    <td>1 hr</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add email capture to website</td>
+                    <td>1 hr</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Create Instagram content calendar</td>
+                    <td>2 hrs</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Set up Square Online store</td>
+                    <td>2 hrs</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Let's Bake</h2>
+            <p>The product is legit. The story sells. The market is hungry. The tech is ready. Let's build something amazing together.</p>
+            <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 2rem;">
+                Joey Kercher<br>
+                joey@hummingagent.ai
+            </p>
+        </div>
+    </div>
+</body>
+</html>
