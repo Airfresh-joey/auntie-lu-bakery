@@ -1333,6 +1333,7 @@
             <li><a href="#faq">FAQs</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#products" class="nav-cta">Order Now</a></li>
+            <li><button id="header-cart-btn" onclick="toggleCart()" class="header-cart-btn" aria-label="Shopping cart">🛒 <span id="header-cart-count" class="cart-badge">0</span></button></li>
         </ul>
         <div class="nav-toggle">
             <span></span>
@@ -1540,9 +1541,9 @@
                         <p class="product-description">Beautifully designed, perfectly dipped. Choose your colors and flavors for any celebration.</p>
                         <div class="product-footer">
                             <span class="product-price">$40 <small>/ dozen</small></span>
-                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </a>
+                            <button class="add-to-cart-btn" onclick="openCustomizeModal('classic-cake-pops', 'Classic Cake Pops', 40.00, 'https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/b671392c-1b28-4631-8814-cdadba725ada/Gemini_Generated_Image_bv2d9abv2d9abv2d.png')">
+                                Customize
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1554,10 +1555,10 @@
                         <h3 class="product-name">Custom Design Pops</h3>
                         <p class="product-description">Themed designs, character shapes, holiday specials - bring your vision to life!</p>
                         <div class="product-footer">
-                            <span class="product-price">$45-60 <small>/ dozen</small></span>
-                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </a>
+                            <span class="product-price">$50 <small>/ dozen</small></span>
+                            <button class="add-to-cart-btn" onclick="openCustomizeModal('custom-design-pops', 'Custom Design Pops', 50.00, 'https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/8c59bd0d-2b34-435c-aa26-11e911f08b5a/Gemini_Generated_Image_13nub213nub213nu.png')">
+                                Customize
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1570,10 +1571,10 @@
                         <h3 class="product-name">Photo Pops</h3>
                         <p class="product-description">Edible images of your photo, logo, or custom design on each pop. Minimum 2 dozen order.</p>
                         <div class="product-footer">
-                            <span class="product-price">$50 <small>/ dozen</small></span>
-                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </a>
+                            <span class="product-price">$60 <small>/ dozen</small></span>
+                            <button class="add-to-cart-btn" onclick="openCustomizeModal('photo-pops', 'Photo Pops', 60.00, 'https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/1aa7d1d4-49d6-4a9c-be15-3c7c691d8286/Gemini_Generated_Image_m2rqdom2rqdom2rq.png', 2)">
+                                Customize
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1936,10 +1937,69 @@
         }
     </script>
 
-    <!-- Floating Cart Button -->
-    <button id="cart-btn" class="floating-cart" onclick="toggleCart()" aria-label="Shopping cart">
-        🛒 <span id="cart-count">0</span>
-    </button>
+    <!-- Cake Pop Customization Modal -->
+    <div id="customize-modal" class="customize-modal">
+        <div class="customize-content">
+            <button class="customize-close" onclick="closeCustomizeModal()">&times;</button>
+            <h2>Customize Your Cake Pops</h2>
+            <div id="customize-product-info"></div>
+            
+            <form id="customize-form">
+                <div class="form-group">
+                    <label>Quantity (dozens)</label>
+                    <select id="custom-quantity" required>
+                        <option value="1">1 dozen (12 pops)</option>
+                        <option value="2">2 dozen (24 pops)</option>
+                        <option value="3">3 dozen (36 pops)</option>
+                        <option value="4">4 dozen (48 pops)</option>
+                        <option value="5">5+ dozen (contact for pricing)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Flavor</label>
+                    <select id="custom-flavor" required>
+                        <option value="vanilla">Vanilla</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="red-velvet">Red Velvet</option>
+                        <option value="funfetti">Funfetti</option>
+                        <option value="lemon">Lemon</option>
+                        <option value="mixed">Mixed Flavors</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Colors</label>
+                    <input type="text" id="custom-colors" placeholder="e.g., Pink and gold, Match my invite" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Theme / Occasion</label>
+                    <input type="text" id="custom-theme" placeholder="e.g., Baby shower, Birthday, Wedding">
+                </div>
+                
+                <div class="form-group">
+                    <label>Special Instructions</label>
+                    <textarea id="custom-instructions" rows="3" placeholder="Any special requests or details..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Inspiration Image (optional)</label>
+                    <input type="file" id="custom-image" accept="image/*">
+                    <div id="image-preview"></div>
+                </div>
+                
+                <div class="customize-footer">
+                    <div class="customize-price">
+                        <span>Subtotal:</span>
+                        <span id="customize-subtotal">$40.00</span>
+                    </div>
+                    <button type="submit" class="add-custom-btn">Add to Cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="customize-overlay" class="customize-overlay" onclick="closeCustomizeModal()"></div>
     
     <!-- Cart Sidebar -->
     <div id="cart-sidebar" class="cart-sidebar">
@@ -1961,23 +2021,161 @@
     <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
     
     <style>
-        .floating-cart {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        /* Header Cart Button */
+        .header-cart-btn {
             background: var(--crust);
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 15px 25px;
-            font-size: 18px;
+            padding: 8px 16px;
+            font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: transform 0.2s, background 0.2s;
+            transition: background 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .floating-cart:hover {
-            transform: scale(1.05);
+        .header-cart-btn:hover {
+            background: var(--dark-crust);
+        }
+        .cart-badge {
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Customize Modal */
+        .customize-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            z-index: 3000;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .customize-modal.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .customize-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2999;
+            display: none;
+        }
+        .customize-overlay.open {
+            display: block;
+        }
+        .customize-content {
+            padding: 30px;
+        }
+        .customize-content h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: var(--crust);
+        }
+        .customize-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+        }
+        #customize-product-info {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: var(--cream);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        #customize-product-info img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--charcoal);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--crust);
+        }
+        #image-preview {
+            margin-top: 10px;
+        }
+        #image-preview img {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 8px;
+        }
+        .customize-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .customize-price {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .customize-price span:last-child {
+            color: var(--crust);
+        }
+        .add-custom-btn {
+            background: var(--crust);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .add-custom-btn:hover {
             background: var(--dark-crust);
         }
         .cart-sidebar {
@@ -2056,6 +2254,12 @@
             color: var(--crust);
             font-weight: 500;
         }
+        .cart-item-custom {
+            color: #666;
+            font-size: 12px;
+            margin-top: 3px;
+            line-height: 1.4;
+        }
         .cart-item-qty {
             display: flex;
             align-items: center;
@@ -2129,22 +2333,23 @@
     <script>
         // Cart functionality
         let cart = JSON.parse(localStorage.getItem('auntie-lu-cart') || '[]');
+        let currentCustomProduct = null;
         
         function updateCartUI() {
             const cartItems = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
             const cartTotal = document.getElementById('cart-total');
             const checkoutBtn = document.getElementById('checkout-btn');
+            const headerCartCount = document.getElementById('header-cart-count');
             
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            cartCount.textContent = totalItems;
+            headerCartCount.textContent = totalItems;
             cartTotal.textContent = '$' + totalPrice.toFixed(2);
             checkoutBtn.disabled = cart.length === 0;
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty<br><small>Add some delicious items!</small></div>';
                 return;
             }
             
@@ -2153,7 +2358,8 @@
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        ${item.customization ? `<div class="cart-item-custom"><small>${item.customization}</small></div>` : ''}
+                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                         <div class="cart-item-qty">
                             <button onclick="updateQty(${index}, -1)">−</button>
                             <span>${item.quantity}</span>
@@ -2166,7 +2372,7 @@
         }
         
         function addToCart(id, name, price, image, description) {
-            const existing = cart.find(item => item.id === id);
+            const existing = cart.find(item => item.id === id && !item.customization);
             if (existing) {
                 existing.quantity++;
             } else {
@@ -2185,6 +2391,105 @@
                 btn.style.background = '';
             }, 1500);
         }
+        
+        // Cake Pop Customization
+        function openCustomizeModal(id, name, basePrice, image, minQty = 1) {
+            currentCustomProduct = { id, name, basePrice, image, minQty };
+            
+            document.getElementById('customize-product-info').innerHTML = `
+                <img src="${image}" alt="${name}">
+                <div>
+                    <strong>${name}</strong>
+                    <div>Starting at $${basePrice.toFixed(2)} / dozen</div>
+                </div>
+            `;
+            
+            // Set minimum quantity for photo pops
+            const qtySelect = document.getElementById('custom-quantity');
+            if (minQty === 2) {
+                qtySelect.innerHTML = `
+                    <option value="2">2 dozen (24 pops) - Minimum</option>
+                    <option value="3">3 dozen (36 pops)</option>
+                    <option value="4">4 dozen (48 pops)</option>
+                    <option value="5">5+ dozen (contact for pricing)</option>
+                `;
+            } else {
+                qtySelect.innerHTML = `
+                    <option value="1">1 dozen (12 pops)</option>
+                    <option value="2">2 dozen (24 pops)</option>
+                    <option value="3">3 dozen (36 pops)</option>
+                    <option value="4">4 dozen (48 pops)</option>
+                    <option value="5">5+ dozen (contact for pricing)</option>
+                `;
+            }
+            
+            updateCustomizePrice();
+            
+            document.getElementById('customize-modal').classList.add('open');
+            document.getElementById('customize-overlay').classList.add('open');
+        }
+        
+        function closeCustomizeModal() {
+            document.getElementById('customize-modal').classList.remove('open');
+            document.getElementById('customize-overlay').classList.remove('open');
+            document.getElementById('customize-form').reset();
+            document.getElementById('image-preview').innerHTML = '';
+            currentCustomProduct = null;
+        }
+        
+        function updateCustomizePrice() {
+            if (!currentCustomProduct) return;
+            const qty = parseInt(document.getElementById('custom-quantity').value) || 1;
+            const subtotal = currentCustomProduct.basePrice * qty;
+            document.getElementById('customize-subtotal').textContent = '$' + subtotal.toFixed(2);
+        }
+        
+        document.getElementById('custom-quantity').addEventListener('change', updateCustomizePrice);
+        
+        // Image preview
+        document.getElementById('custom-image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Handle customization form submit
+        document.getElementById('customize-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const qty = parseInt(document.getElementById('custom-quantity').value);
+            const flavor = document.getElementById('custom-flavor').value;
+            const colors = document.getElementById('custom-colors').value;
+            const theme = document.getElementById('custom-theme').value;
+            const instructions = document.getElementById('custom-instructions').value;
+            
+            const customization = `${qty} doz • ${flavor} • ${colors}${theme ? ' • ' + theme : ''}`;
+            const fullDescription = `Flavor: ${flavor}, Colors: ${colors}, Theme: ${theme || 'N/A'}, Instructions: ${instructions || 'None'}`;
+            
+            const totalPrice = currentCustomProduct.basePrice * qty;
+            
+            cart.push({
+                id: currentCustomProduct.id + '-' + Date.now(),
+                name: currentCustomProduct.name,
+                price: totalPrice,
+                image: currentCustomProduct.image,
+                description: fullDescription,
+                customization: customization,
+                quantity: 1
+            });
+            
+            localStorage.setItem('auntie-lu-cart', JSON.stringify(cart));
+            updateCartUI();
+            closeCustomizeModal();
+            
+            // Open cart to show the added item
+            setTimeout(() => toggleCart(), 300);
+        });
         
         function updateQty(index, change) {
             cart[index].quantity += change;
