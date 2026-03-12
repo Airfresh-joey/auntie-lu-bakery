@@ -1329,7 +1329,7 @@
             <li><a href="#process">How It Works</a></li>
             <li><a href="#faq">FAQs</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://cash.app/$auntielusbakery" target="_blank" class="nav-cta">Order Now</a></li>
+            <li><a href="#" onclick="openOrderModal(); return false;" class="nav-cta">Order Now</a></li>
         </ul>
         <div class="nav-toggle">
             <span></span>
@@ -1452,7 +1452,7 @@
                         <p>Slow-fermented with wild yeast, hand-shaped, and baked to golden perfection. Our sourdough is the real deal - no shortcuts, no compromises.</p>
                         <span class="world-price">Starting at $16</span>
                         <br><br>
-                        <a href="https://cash.app/$auntielusbakery" target="_blank" class="btn btn-primary">Order Bread</a>
+                        <a href="#" onclick="openOrderModal(); return false;" class="btn btn-primary">Order Bread</a>
                     </div>
                 </div>
                 <div class="world-card fade-in">
@@ -1931,6 +1931,102 @@
                 }
             });
         }
+    </script>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="order-modal" onclick="closeOrderModal(event)">
+        <div class="order-modal-content">
+            <button class="order-modal-close" onclick="closeOrderModal()">&times;</button>
+            <iframe id="order-iframe" src="" frameborder="0" allow="payment"></iframe>
+        </div>
+    </div>
+
+    <style>
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .order-modal.active {
+            display: flex;
+        }
+        .order-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            height: 85vh;
+            max-height: 800px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .order-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--crust);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .order-modal-close:hover {
+            background: var(--dark-crust);
+        }
+        #order-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        @media (max-width: 600px) {
+            .order-modal-content {
+                width: 100%;
+                height: 100%;
+                max-height: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+
+    <script>
+        function openOrderModal() {
+            const modal = document.getElementById('order-modal');
+            const iframe = document.getElementById('order-iframe');
+            iframe.src = 'https://cash.app/$auntielusbakery';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeOrderModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('order-modal');
+            const iframe = document.getElementById('order-iframe');
+            modal.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
+        
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeOrderModal();
+        });
     </script>
 </body>
 </html>
