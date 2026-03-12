@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Snipcart CSS -->
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
     
     <style>
         * {
@@ -1500,15 +1499,7 @@
                         <p class="product-description">Perfect for gatherings. 12 pillowy, golden-crusted dinner rolls with that signature sourdough tang.</p>
                         <div class="product-footer">
                             <span class="product-price">$18 <small>/ dozen</small></span>
-                            <button class="snipcart-add-item add-to-cart"
-                                data-item-id="sourdough-dinner-rolls"
-                                data-item-name="Sourdough Dinner Rolls (12 count)"
-                                data-item-price="18.00"
-                                data-item-url="/products/sourdough-dinner-rolls"
-                                data-item-description="12 pillowy, golden-crusted dinner rolls with signature sourdough tang."
-                                data-item-image="https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/33726d89-bfff-4c5c-b6bf-0da5fa1352f4/IMG_3460.jpeg"
-                                data-item-quantity="1"
-                                data-item-min-quantity="1">
+                            <button class="add-to-cart-btn" onclick="addToCart('sourdough-dinner-rolls', 'Sourdough Dinner Rolls (12 count)', 18.00, 'https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/33726d89-bfff-4c5c-b6bf-0da5fa1352f4/IMG_3460.jpeg', '12 pillowy, golden-crusted dinner rolls with signature sourdough tang.')">
                                 Add to Cart
                             </button>
                         </div>
@@ -1523,15 +1514,7 @@
                         <p class="product-description">Our signature country loaf. Crispy crust, open crumb, 24+ hours of slow fermentation.</p>
                         <div class="product-footer">
                             <span class="product-price">$16</span>
-                            <button class="snipcart-add-item add-to-cart"
-                                data-item-id="classic-sourdough-loaf"
-                                data-item-name="Classic Sourdough Loaf"
-                                data-item-price="16.00"
-                                data-item-url="/products/classic-sourdough-loaf"
-                                data-item-description="Our signature country loaf. Crispy crust, open crumb, 24+ hours of slow fermentation."
-                                data-item-image="https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/438f87db-b703-4b98-82d1-2accac5bc4a7/att.tYonkehb9wXzpXxWpyGNjO7XYd49FYVw5TiwTq7EEwo.jpeg"
-                                data-item-quantity="1"
-                                data-item-min-quantity="1">
+                            <button class="add-to-cart-btn" onclick="addToCart('classic-sourdough-loaf', 'Classic Sourdough Loaf', 16.00, 'https://images.squarespace-cdn.com/content/v1/69306f1e46242d1060eb0280/438f87db-b703-4b98-82d1-2accac5bc4a7/att.tYonkehb9wXzpXxWpyGNjO7XYd49FYVw5TiwTq7EEwo.jpeg', 'Our signature country loaf. Crispy crust, open crumb, 24+ hours of slow fermentation.')">
                                 Add to Cart
                             </button>
                         </div>
@@ -1953,14 +1936,29 @@
         }
     </script>
 
-    <!-- Snipcart Script -->
-    <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_API_KEY" data-config-modal-style="side"></div>
-    
-    <!-- Cart Button (floating) -->
-    <button class="snipcart-checkout floating-cart" aria-label="Shopping cart">
-        🛒 <span class="snipcart-items-count"></span>
+    <!-- Floating Cart Button -->
+    <button id="cart-btn" class="floating-cart" onclick="toggleCart()" aria-label="Shopping cart">
+        🛒 <span id="cart-count">0</span>
     </button>
+    
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button onclick="toggleCart()" class="cart-close">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-btn" onclick="checkout()" class="checkout-btn" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
     
     <style>
         .floating-cart {
@@ -1982,19 +1980,273 @@
             transform: scale(1.05);
             background: var(--dark-crust);
         }
-        .snipcart-add-item {
-            background: var(--crust) !important;
-            color: white !important;
-            border: none !important;
-            padding: 10px 20px !important;
-            border-radius: 8px !important;
-            cursor: pointer !important;
-            font-weight: 500 !important;
-            transition: background 0.2s !important;
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            max-width: 90vw;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .snipcart-add-item:hover {
-            background: var(--dark-crust) !important;
+        .cart-sidebar.open {
+            right: 0;
+        }
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+        .cart-overlay.open {
+            display: block;
+        }
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h3 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .cart-item-price {
+            color: var(--crust);
+            font-weight: 500;
+        }
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .cart-item-qty button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .cart-item-qty button:hover {
+            background: #f5f5f5;
+        }
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--crust);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .checkout-btn:hover:not(:disabled) {
+            background: var(--dark-crust);
+        }
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+        .add-to-cart-btn {
+            background: var(--crust);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .add-to-cart-btn:hover {
+            background: var(--dark-crust);
+            transform: scale(1.02);
         }
     </style>
+    
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('auntie-lu-cart') || '[]');
+        
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = '$' + totalPrice.toFixed(2);
+            checkoutBtn.disabled = cart.length === 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-qty">
+                            <button onclick="updateQty(${index}, -1)">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQty(${index}, 1)">+</button>
+                            <button onclick="removeItem(${index})" style="margin-left: 10px; color: #c00;">✕</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function addToCart(id, name, price, image, description) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ id, name, price, image, description, quantity: 1 });
+            }
+            localStorage.setItem('auntie-lu-cart', JSON.stringify(cart));
+            updateCartUI();
+            
+            // Show feedback
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Added!';
+            btn.style.background = '#2d8a2d';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 1500);
+        }
+        
+        function updateQty(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('auntie-lu-cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+        
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('auntie-lu-cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+        
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('open');
+            document.getElementById('cart-overlay').classList.toggle('open');
+        }
+        
+        async function checkout() {
+            const btn = document.getElementById('checkout-btn');
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: cart })
+                });
+                
+                const data = await response.json();
+                
+                if (data.url) {
+                    // Clear cart and redirect to Stripe
+                    localStorage.removeItem('auntie-lu-cart');
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Checkout failed');
+                }
+            } catch (error) {
+                alert('Checkout error: ' + error.message);
+                btn.textContent = 'Proceed to Checkout';
+                btn.disabled = false;
+            }
+        }
+        
+        // Initialize cart on page load
+        updateCartUI();
+        
+        // Check for success/cancel from Stripe
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success')) {
+            alert('🎉 Order placed successfully! Auntie Lu will contact you about pickup.');
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+        if (urlParams.get('canceled')) {
+            alert('Order was canceled. Your cart is still saved.');
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+    </script>
 </body>
 </html>
