@@ -1329,7 +1329,7 @@
             <li><a href="#process">How It Works</a></li>
             <li><a href="#faq">FAQs</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#" onclick="openOrderModal(); return false;" class="nav-cta">Order Now</a></li>
+            <li><a href="#products" class="nav-cta">Order Now</a></li>
         </ul>
         <div class="nav-toggle">
             <span></span>
@@ -1452,7 +1452,7 @@
                         <p>Slow-fermented with wild yeast, hand-shaped, and baked to golden perfection. Our sourdough is the real deal - no shortcuts, no compromises.</p>
                         <span class="world-price">Starting at $16</span>
                         <br><br>
-                        <a href="#" onclick="openOrderModal(); return false;" class="btn btn-primary">Order Bread</a>
+                        <a href="#bread-section" class="btn btn-primary">Order Bread</a>
                     </div>
                 </div>
                 <div class="world-card fade-in">
@@ -1496,9 +1496,9 @@
                         <p class="product-description">Perfect for gatherings. 12 pillowy, golden-crusted dinner rolls with that signature sourdough tang.</p>
                         <div class="product-footer">
                             <span class="product-price">$16 <small>/ dozen</small></span>
-                            <button class="add-to-cart">
+                            <a href="https://cash.app/$auntielusbakery" target="_blank" class="add-to-cart" title="Order Now">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1511,9 +1511,9 @@
                         <p class="product-description">Our signature country loaf. Crispy crust, open crumb, 24+ hours of slow fermentation.</p>
                         <div class="product-footer">
                             <span class="product-price">$14</span>
-                            <button class="add-to-cart">
+                            <a href="https://cash.app/$auntielusbakery" target="_blank" class="add-to-cart" title="Order Now">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1537,9 +1537,9 @@
                         <p class="product-description">Beautifully designed, perfectly dipped. Choose your colors and flavors for any celebration.</p>
                         <div class="product-footer">
                             <span class="product-price">$40 <small>/ dozen</small></span>
-                            <button class="add-to-cart">
+                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1552,9 +1552,9 @@
                         <p class="product-description">Themed designs, character shapes, holiday specials - bring your vision to life!</p>
                         <div class="product-footer">
                             <span class="product-price">$45-60 <small>/ dozen</small></span>
-                            <button class="add-to-cart">
+                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1568,9 +1568,9 @@
                         <p class="product-description">Edible images of your photo, logo, or custom design on each pop. Minimum 2 dozen order.</p>
                         <div class="product-footer">
                             <span class="product-price">$50 <small>/ dozen</small></span>
-                            <button class="add-to-cart">
+                            <a href="#contact" class="add-to-cart" title="Request Custom Order">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1933,20 +1933,5 @@
         }
     </script>
 
-    <script>
-        function openOrderModal() {
-            // Centered popup window - feels like modal but not blocked by security
-            const width = 450;
-            const height = 700;
-            const left = (window.innerWidth - width) / 2 + window.screenX;
-            const top = (window.innerHeight - height) / 2 + window.screenY;
-            
-            window.open(
-                'https://cash.app/$auntielusbakery',
-                'AuntieLuOrder',
-                `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
-            );
-        }
-    </script>
 </body>
 </html>
