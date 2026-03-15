@@ -23,7 +23,7 @@ function ContactoForm() {
     const form = formRef.current
     if (!form) return
     try {
-      const res = await fetch('https://formspree.io/f/PLACEHOLDER_ID', {
+      const res = await fetch('https://formspree.io/f/myznknaa', {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },

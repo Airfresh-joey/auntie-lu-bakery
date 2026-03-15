@@ -28,7 +28,7 @@ export default function NewsletterPopup() {
 
     try {
       // Using Formspree for simplicity - replace with your form ID
-      const res = await fetch('https://formspree.io/f/newsletter', {
+      const res = await fetch('https://formspree.io/f/myznknaa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, _subject: 'New Newsletter Signup' })
