@@ -8,7 +8,15 @@ const supabase = createClient(
   process.env.SUPABASE_URL || 'https://placeholder.supabase.co',
   process.env.SUPABASE_SERVICE_KEY || 'placeholder'
 )
-const resend = new Resend(process.env.RESEND_API_KEY)
+
+// Initialize Resend lazily to avoid build errors
+function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not set - email notifications disabled')
+    return null
+  }
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 async function sendOrderNotification(order: any, items: any[]) {
   const itemsList = items.map(item => 
@@ -40,6 +48,9 @@ async function sendOrderNotification(order: any, items: any[]) {
       </p>
     </div>
   `
+
+  const resend = getResend()
+  if (!resend) return
 
   try {
     await resend.emails.send({
