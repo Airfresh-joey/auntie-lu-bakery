@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CartProvider from '@/components/CartProvider'
 import CartSidebar from '@/components/CartSidebar'
+import NewsletterPopup from '@/components/NewsletterPopup'
 import { LocalBusinessSchema } from '@/components/SchemaMarkup'
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <CartSidebar />
+          <NewsletterPopup />
         </CartProvider>
       </body>
     </html>
