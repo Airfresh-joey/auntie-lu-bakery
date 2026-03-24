@@ -412,7 +412,7 @@ export default function HomeClient() {
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <span className="text-2xl">📍</span>
-                <div><strong className="text-dark-crust">Pickup Location</strong><p className="text-[#6B6560] text-sm">San Diego, CO</p></div>
+                <div><strong className="text-dark-crust">Pickup Location</strong><p className="text-[#6B6560] text-sm">San Diego, CA</p></div>
               </div>
               <div className="flex items-start gap-4">
                 <span className="text-2xl">📧</span>
