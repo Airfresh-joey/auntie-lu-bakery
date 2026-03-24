@@ -219,17 +219,9 @@ export default function HomeClient() {
             ))}
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/awards" className="inline-flex items-center gap-2 bg-gradient-to-r from-wheat to-crust text-white px-5 py-2.5 rounded-full text-xs font-semibold no-underline shadow-sm hover:shadow-md transition-shadow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-              Best of San Diego 2024 &amp; 2025
-            </Link>
             <Link href="/awards" className="inline-flex items-center gap-2 bg-white text-dark-crust px-5 py-2.5 rounded-full text-xs font-semibold no-underline border border-blush shadow-sm hover:shadow-md transition-shadow">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               4.9 Stars &middot; 200+ Reviews
-            </Link>
-            <Link href="/awards" className="inline-flex items-center gap-2 bg-white text-dark-crust px-5 py-2.5 rounded-full text-xs font-semibold no-underline border border-blush shadow-sm hover:shadow-md transition-shadow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              Couples&apos; Choice 2025
             </Link>
           </div>
         </div>
