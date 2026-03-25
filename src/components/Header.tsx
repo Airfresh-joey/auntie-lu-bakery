@@ -5,16 +5,16 @@ import Link from 'next/link'
 import { useCart } from './CartProvider'
 
 const occasionLinks = [
-  { href: '/valentines-day-cake-pops', label: "Valentine's Day" },
-  { href: '/easter-cake-pops', label: 'Easter' },
-  { href: '/mothers-day-cake-pops', label: "Mother's Day" },
-  { href: '/fathers-day-cake-pops', label: "Father's Day" },
-  { href: '/fourth-of-july-cake-pops', label: '4th of July' },
-  { href: '/halloween-cake-pops', label: 'Halloween' },
-  { href: '/thanksgiving-cake-pops', label: 'Thanksgiving' },
-  { href: '/christmas-cake-pops', label: 'Christmas' },
-  { href: '/new-years-cake-pops', label: "New Year's Eve" },
-  { href: '/holiday-cake-pops', label: 'All Holidays' },
+  { href: '/valentines-day-cakes', label: "Valentine's Day" },
+  { href: '/easter-cakes', label: 'Easter' },
+  { href: '/mothers-day-cakes', label: "Mother's Day" },
+  { href: '/fathers-day-cakes', label: "Father's Day" },
+  { href: '/fourth-of-july-cakes', label: '4th of July' },
+  { href: '/halloween-cakes', label: 'Halloween' },
+  { href: '/thanksgiving-desserts', label: 'Thanksgiving' },
+  { href: '/christmas-cakes', label: 'Christmas' },
+  { href: '/new-years-cakes', label: "New Year's Eve" },
+  { href: '/holiday-cakes', label: 'All Holidays' },
 ]
 
 export default function Header() {
