@@ -6,7 +6,7 @@ import { eventPages, getEventPage, getAllEventSlugs } from '@/data/events'
 import { allCities } from '@/data/cities'
 import { CityPage } from '@/data/cities/types'
 import { products, ProductPage } from '@/data/products'
-import { galleryImages, categoryGalleryMap, cityPageImages, eventPageImages } from '@/data/gallery'
+import { galleryImages, categoryGalleryMap, cityPageImages, eventPageImages, cakePopPageImages } from '@/data/gallery'
 import ProductImageGrid from '@/components/ProductImageGrid'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import CTASection from '@/components/CTASection'
@@ -98,6 +98,9 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
 // ═══════════════════════════════════════════════════════
 
 function EventServicePage({ page }: { page: (typeof eventPages)[number] }) {
+  const isCakePopPage = page.slug.includes('cake-pops')
+  const pageImages = isCakePopPage ? cakePopPageImages : eventPageImages
+  
   const breadcrumbs = [
     { name: 'Home', href: '/' },
     { name: page.category === 'event' ? 'Events' : 'Products & Services', href: '/' },
@@ -182,7 +185,7 @@ function EventServicePage({ page }: { page: (typeof eventPages)[number] }) {
       <ProductImageGrid
         title={`${page.h1.replace(' in San Diego', '')} Inspiration`}
         subtitle="Browse our recent creations for inspiration"
-        images={eventPageImages}
+        images={pageImages}
         columns={4}
         background="white"
       />
