@@ -2,19 +2,20 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useCart } from './CartProvider'
 
 const occasionLinks = [
-  { href: '/valentines-day-cake-pops', label: "Valentine's Day" },
-  { href: '/easter-cake-pops', label: 'Easter' },
-  { href: '/mothers-day-cake-pops', label: "Mother's Day" },
-  { href: '/fathers-day-cake-pops', label: "Father's Day" },
-  { href: '/fourth-of-july-cake-pops', label: '4th of July' },
-  { href: '/halloween-cake-pops', label: 'Halloween' },
-  { href: '/thanksgiving-cake-pops', label: 'Thanksgiving' },
-  { href: '/christmas-cake-pops', label: 'Christmas' },
-  { href: '/new-years-cake-pops', label: "New Year's Eve" },
-  { href: '/holiday-cake-pops', label: 'All Holidays' },
+  { href: '/valentines-day-cakes', label: "Valentine's Day" },
+  { href: '/easter-cakes', label: 'Easter' },
+  { href: '/mothers-day-cakes', label: "Mother's Day" },
+  { href: '/fathers-day-cakes', label: "Father's Day" },
+  { href: '/fourth-of-july-cakes', label: '4th of July' },
+  { href: '/halloween-cakes', label: 'Halloween' },
+  { href: '/thanksgiving-desserts', label: 'Thanksgiving' },
+  { href: '/christmas-cakes', label: 'Christmas' },
+  { href: '/new-years-cakes', label: "New Year's Eve" },
+  { href: '/holiday-cakes', label: 'All Holidays' },
 ]
 
 export default function Header() {
@@ -24,6 +25,8 @@ export default function Header() {
   const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
   const { cart, toggleCart } = useCart()
+  const pathname = usePathname()
+  const isSpanish = pathname.startsWith('/es')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -112,8 +115,16 @@ export default function Header() {
         <li><Link href="/contact" className={navLinkClass} onClick={() => setMobileOpen(false)}>Contact</Link></li>
         <li><Link href="/book-consultation" className="bg-wheat text-dark-crust px-5 py-2.5 rounded-full text-[0.85rem] font-semibold no-underline hover:bg-wheat/80 transition-all" onClick={() => setMobileOpen(false)}>Book Now</Link></li>
         <li><Link href="/#products" className="bg-dark-crust text-white px-6 py-3 rounded-full text-[0.9rem] font-semibold hover:bg-crust hover:-translate-y-0.5 transition-all" onClick={() => setMobileOpen(false)}>Order Now</Link></li>
+        <li className="md:hidden"><Link href={isSpanish ? '/' : '/es'} className={navLinkClass} onClick={() => setMobileOpen(false)}>{isSpanish ? '🇺🇸 English' : '🇲🇽 Español'}</Link></li>
       </ul>
       <div className="flex items-center gap-3">
+        <Link
+          href={isSpanish ? '/' : '/es'}
+          className="text-dark-crust no-underline text-sm font-semibold border-2 border-blush rounded-full px-3 py-1.5 hover:bg-blush/20 transition-colors"
+          aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}
+        >
+          {isSpanish ? 'EN' : 'ES'}
+        </Link>
         <button onClick={toggleCart} className="bg-crust text-white border-none rounded-full px-4 py-2 text-base cursor-pointer flex items-center gap-1.5 hover:bg-dark-crust transition-colors" aria-label="Shopping cart">
           🛒 <span className="bg-red-500 text-white rounded-full px-2 py-0.5 text-xs font-bold">{totalItems}</span>
         </button>

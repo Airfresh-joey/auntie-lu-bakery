@@ -99,10 +99,3 @@ export const blogPostImages: ProductGridImage[] = [
   { src: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b', alt: 'Fresh Cake Slice', category: 'Desserts' },
   { src: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636', alt: 'Fresh Baked Pastries', category: 'Pastries' },
 ]
-
-export const cakePopPageImages: ProductGridImage[] = [
-  { src: 'https://images.unsplash.com/photo-1558326567-98ae2405596b', alt: 'Colorful Cake Pops', category: 'Cake Pops' },
-  { src: 'https://images.unsplash.com/photo-1600617952916-74ab04c3e75f', alt: 'Pink Cake Pops', category: 'Cake Pops' },
-  { src: 'https://images.unsplash.com/photo-1551404973-761c83cd8339', alt: 'Decorated Cake Pops', category: 'Cake Pops' },
-  { src: 'https://images.unsplash.com/photo-1587536849024-daaa4a417b16', alt: 'Festive Cake Pops', category: 'Cake Pops' },
-]

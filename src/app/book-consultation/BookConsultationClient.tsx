@@ -309,7 +309,7 @@ export default function BookConsultationClient() {
                     </div>
                     <div>
                       <strong className="text-dark-crust text-sm">Location</strong>
-                      <p className="text-sm text-[#6B6560]">San Diego, CA</p>
+                      <p className="text-sm text-[#6B6560]">San Diego, CO</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
