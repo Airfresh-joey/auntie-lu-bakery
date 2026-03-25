@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useCart } from './CartProvider'
 
 const occasionLinks = [
@@ -25,8 +24,6 @@ export default function Header() {
   const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
   const { cart, toggleCart } = useCart()
-  const pathname = usePathname()
-  const isSpanish = pathname.startsWith('/es')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -115,16 +112,8 @@ export default function Header() {
         <li><Link href="/contact" className={navLinkClass} onClick={() => setMobileOpen(false)}>Contact</Link></li>
         <li><Link href="/book-consultation" className="bg-wheat text-dark-crust px-5 py-2.5 rounded-full text-[0.85rem] font-semibold no-underline hover:bg-wheat/80 transition-all" onClick={() => setMobileOpen(false)}>Book Now</Link></li>
         <li><Link href="/#products" className="bg-dark-crust text-white px-6 py-3 rounded-full text-[0.9rem] font-semibold hover:bg-crust hover:-translate-y-0.5 transition-all" onClick={() => setMobileOpen(false)}>Order Now</Link></li>
-        <li className="md:hidden"><Link href={isSpanish ? '/' : '/es'} className={navLinkClass} onClick={() => setMobileOpen(false)}>{isSpanish ? '🇺🇸 English' : '🇲🇽 Español'}</Link></li>
       </ul>
       <div className="flex items-center gap-3">
-        <Link
-          href={isSpanish ? '/' : '/es'}
-          className="text-dark-crust no-underline text-sm font-semibold border-2 border-blush rounded-full px-3 py-1.5 hover:bg-blush/20 transition-colors"
-          aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}
-        >
-          {isSpanish ? 'EN' : 'ES'}
-        </Link>
         <button onClick={toggleCart} className="bg-crust text-white border-none rounded-full px-4 py-2 text-base cursor-pointer flex items-center gap-1.5 hover:bg-dark-crust transition-colors" aria-label="Shopping cart">
           🛒 <span className="bg-red-500 text-white rounded-full px-2 py-0.5 text-xs font-bold">{totalItems}</span>
         </button>
