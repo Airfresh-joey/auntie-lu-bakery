@@ -178,8 +178,8 @@ export default function HomeClient() {
                 Browse &amp; Order
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <Link href="/book-consultation" className="inline-flex items-center gap-2 bg-wheat text-dark-crust px-8 py-4 rounded-full font-semibold no-underline hover:bg-wheat/80 transition-all">
-                Book a Consultation
+              <Link href="/contact" className="inline-flex items-center gap-2 bg-wheat text-dark-crust px-8 py-4 rounded-full font-semibold no-underline hover:bg-wheat/80 transition-all">
+                Get in Touch
               </Link>
             </div>
           </div>
@@ -204,34 +204,6 @@ export default function HomeClient() {
               <div className="text-gray-400 text-sm mt-2">{s.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* As Featured In */}
-      <section className="py-14 px-[4%] bg-cream border-b border-blush/30">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#6B6560] mb-8">As Featured In</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 items-center mb-10">
-            {['SD Union-Tribune', 'SD Magazine', 'Eater SD', 'NBC 7', 'KPBS', 'The Knot', 'WeddingWire', 'SD Reader'].map((name) => (
-              <div key={name} className="flex items-center justify-center h-14 px-3 bg-white rounded-xl shadow-sm border border-blush/30">
-                <span className="text-charcoal/60 font-semibold text-[10px] text-center leading-tight">{name}</span>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/awards" className="inline-flex items-center gap-2 bg-gradient-to-r from-wheat to-crust text-white px-5 py-2.5 rounded-full text-xs font-semibold no-underline shadow-sm hover:shadow-md transition-shadow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-              Best of San Diego 2024 &amp; 2025
-            </Link>
-            <Link href="/awards" className="inline-flex items-center gap-2 bg-white text-dark-crust px-5 py-2.5 rounded-full text-xs font-semibold no-underline border border-blush shadow-sm hover:shadow-md transition-shadow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              4.9 Stars &middot; 200+ Reviews
-            </Link>
-            <Link href="/awards" className="inline-flex items-center gap-2 bg-white text-dark-crust px-5 py-2.5 rounded-full text-xs font-semibold no-underline border border-blush shadow-sm hover:shadow-md transition-shadow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              Couples&apos; Choice 2025
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -420,7 +392,7 @@ export default function HomeClient() {
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <span className="text-2xl">📍</span>
-                <div><strong className="text-dark-crust">Pickup Location</strong><p className="text-[#6B6560] text-sm">San Diego, CO</p></div>
+                <div><strong className="text-dark-crust">Pickup Location</strong><p className="text-[#6B6560] text-sm">San Diego, CA</p></div>
               </div>
               <div className="flex items-start gap-4">
                 <span className="text-2xl">📧</span>
@@ -485,14 +457,14 @@ export default function HomeClient() {
       {/* CTA */}
       <section className="bg-dark-crust py-20 px-[4%] text-center">
         <h2 className="text-3xl md:text-4xl text-white mb-4">Have a Special Event?</h2>
-        <p className="text-blush text-lg mb-8">Book a free consultation to discuss custom cakes, cake pops, or sourdough for your celebration!</p>
+        <p className="text-blush text-lg mb-8">Let&apos;s make your celebration delicious with fresh sourdough or custom cake pops!</p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/book-consultation" className="inline-flex items-center gap-2 bg-wheat text-dark-crust px-8 py-4 rounded-full font-semibold no-underline hover:bg-white transition-colors">
-            Book a Consultation
+          <a href="/#products" className="inline-flex items-center gap-2 bg-wheat text-dark-crust px-8 py-4 rounded-full font-semibold no-underline hover:bg-white transition-colors">
+            Order Now
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Link>
-          <Link href="/tastings" className="inline-flex items-center gap-2 bg-transparent text-white px-8 py-4 rounded-full font-semibold no-underline border-2 border-white/30 hover:bg-white/10 transition-colors">
-            Cake Tastings
+          </a>
+          <Link href="/contact" className="inline-flex items-center gap-2 bg-transparent text-white px-8 py-4 rounded-full font-semibold no-underline border-2 border-white/30 hover:bg-white/10 transition-colors">
+            Contact Us
           </Link>
         </div>
       </section>

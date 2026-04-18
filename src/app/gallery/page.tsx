@@ -5,44 +5,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const galleryImages = [
-  // Wedding Cakes
-  { src: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587', alt: 'Elegant Three-Tier Wedding Cake', category: 'Wedding Cakes' },
-  { src: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d', alt: 'White Floral Wedding Cake', category: 'Wedding Cakes' },
-  { src: 'https://images.unsplash.com/photo-1562440499-64c9a111f713', alt: 'Classic Tiered Wedding Cake', category: 'Wedding Cakes' },
-  { src: 'https://images.unsplash.com/photo-1519654793190-2e8a4806f1f2', alt: 'Rustic Wedding Cake with Flowers', category: 'Wedding Cakes' },
-
-  // Birthday Cakes
-  { src: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3', alt: 'Colorful Birthday Celebration Cake', category: 'Birthday Cakes' },
-  { src: 'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec', alt: 'Sprinkle-Topped Birthday Cupcakes', category: 'Birthday Cakes' },
-  { src: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d', alt: 'Beautifully Decorated Birthday Cake', category: 'Birthday Cakes' },
-  { src: 'https://images.unsplash.com/photo-1587668178277-295251f900ce', alt: 'Rich Chocolate Birthday Cake', category: 'Birthday Cakes' },
-
-  // Cupcakes
-  { src: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2', alt: 'Gourmet Frosted Cupcakes', category: 'Cupcakes' },
-  { src: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd', alt: 'Vanilla Bean Cupcakes', category: 'Cupcakes' },
-  { src: 'https://images.unsplash.com/photo-1603532648955-039310d9ed75', alt: 'Decorated Cupcake Assortment', category: 'Cupcakes' },
-  { src: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7', alt: 'Mini Cupcakes with Buttercream', category: 'Cupcakes' },
-
-  // Sourdough
   { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff', alt: 'Artisan Sourdough Loaf', category: 'Sourdough' },
   { src: 'https://images.unsplash.com/photo-1555507036-ab1f4038024a', alt: 'Fresh Scored Sourdough', category: 'Sourdough' },
   { src: 'https://images.unsplash.com/photo-1586444248902-2367d0834971', alt: 'Sourdough Bread Basket', category: 'Sourdough' },
   { src: 'https://images.unsplash.com/photo-1549931319-a545753467c8', alt: 'Golden Sourdough Rolls', category: 'Sourdough' },
-
-  // Cake Pops
   { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e', alt: 'Assorted Chocolate Cake Pops', category: 'Cake Pops' },
   { src: 'https://images.unsplash.com/photo-1600326145308-d3d00a4c7e4e', alt: 'Decorated Party Cake Pops', category: 'Cake Pops' },
   { src: 'https://images.unsplash.com/photo-1551024506-0bccd828d307', alt: 'Pink Sprinkle Cake Pops', category: 'Cake Pops' },
-
-  // Cookies & Pastries
-  { src: 'https://images.unsplash.com/photo-1519869325930-281384f7f584', alt: 'Decorated Sugar Cookies', category: 'Cookies' },
-  { src: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636', alt: 'Fresh Baked Pastry Assortment', category: 'Pastries' },
-  { src: 'https://images.unsplash.com/photo-1517433367423-c7e5b0f35086', alt: 'Buttery Croissants', category: 'Pastries' },
-  { src: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e', alt: 'Chocolate Chip Cookies', category: 'Cookies' },
-  { src: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e', alt: 'Fresh Danish Pastries', category: 'Pastries' },
 ]
 
-const categories = ['All', 'Wedding Cakes', 'Birthday Cakes', 'Cupcakes', 'Sourdough', 'Cake Pops', 'Cookies', 'Pastries']
+const categories = ['All', 'Sourdough', 'Cake Pops']
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -87,7 +59,7 @@ export default function GalleryPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1600&h=900&fit=crop"
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&h=900&fit=crop"
             alt="Auntie Lu's Bakery creations"
             fill
             className="object-cover"
@@ -101,7 +73,7 @@ export default function GalleryPage() {
             Our Creations
           </h1>
           <p className="text-white/90 text-lg max-w-2xl mx-auto">
-            Browse our portfolio of custom cakes, artisan sourdough, handcrafted cake pops, and more.
+            Browse our artisan sourdough and handcrafted cake pops.
           </p>
         </div>
       </section>
@@ -149,7 +121,7 @@ export default function GalleryPage() {
                 className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-cream border-0 p-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-crust focus-visible:ring-offset-2"
               >
                 <Image
-                  src={`${image.src}?w=600&h=450&fit=crop&q=80`}
+                  src={`${image.src}?w=800&h=600&fit=crop&q=80`}
                   alt={image.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -179,13 +151,13 @@ export default function GalleryPage() {
         <div className="max-w-3xl mx-auto">
           <h2 className="font-serif text-3xl md:text-4xl mb-6">Love What You See?</h2>
           <p className="text-white/80 text-lg mb-8">
-            Let us create something beautiful for your next celebration. Every design is custom-made just for you.
+            Ready to order sourdough or cake pops? Get in touch and let&apos;s make it happen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-wheat text-white px-8 py-4 rounded-full font-semibold hover:bg-wheat/90 transition-colors no-underline">
               Start Your Order
             </Link>
-            <Link href="/products" className="bg-white/10 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-colors no-underline border border-white/20">
+            <Link href="/#products" className="bg-white/10 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-colors no-underline border border-white/20">
               Browse Products
             </Link>
           </div>
