@@ -4,11 +4,15 @@ import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const galleryImages = [
-  { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff', alt: 'Artisan Sourdough Loaf', category: 'Sourdough' },
-  { src: 'https://images.unsplash.com/photo-1555507036-ab1f4038024a', alt: 'Fresh Scored Sourdough', category: 'Sourdough' },
-  { src: 'https://images.unsplash.com/photo-1586444248902-2367d0834971', alt: 'Sourdough Bread Basket', category: 'Sourdough' },
-  { src: 'https://images.unsplash.com/photo-1549931319-a545753467c8', alt: 'Golden Sourdough Rolls', category: 'Sourdough' },
+type GalleryItem = { src: string; alt: string; category: string; local?: boolean }
+
+const galleryImages: GalleryItem[] = [
+  { src: '/gallery/sourdough/sourdough-01.jpg', alt: 'Hand-scored artisan sourdough loaf with golden crust on a wooden board', category: 'Sourdough', local: true },
+  { src: '/gallery/sourdough/sourdough-02.jpg', alt: 'Rustic sourdough loaf with crisp crackled crust', category: 'Sourdough', local: true },
+  { src: '/gallery/sourdough/sourdough-03.jpg', alt: 'Golden-brown round sourdough loaf fresh from the oven', category: 'Sourdough', local: true },
+  { src: '/gallery/sourdough/sourdough-04.jpg', alt: 'Beautifully scored sourdough boule with a deep golden crust', category: 'Sourdough', local: true },
+  { src: '/gallery/sourdough/sourdough-05.jpg', alt: 'Cluster of seeded sourdough rolls with sesame and poppy', category: 'Sourdough', local: true },
+  { src: '/gallery/sourdough/sourdough-06.jpg', alt: 'Classic round sourdough loaf with a crisp golden crust', category: 'Sourdough', local: true },
   { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e', alt: 'Assorted Chocolate Cake Pops', category: 'Cake Pops' },
   { src: 'https://images.unsplash.com/photo-1600326145308-d3d00a4c7e4e', alt: 'Decorated Party Cake Pops', category: 'Cake Pops' },
   { src: 'https://images.unsplash.com/photo-1551024506-0bccd828d307', alt: 'Pink Sprinkle Cake Pops', category: 'Cake Pops' },
@@ -59,7 +63,7 @@ export default function GalleryPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&h=900&fit=crop"
+            src="/gallery/sourdough/sourdough-01.jpg"
             alt="Auntie Lu's Bakery creations"
             fill
             className="object-cover"
@@ -121,7 +125,7 @@ export default function GalleryPage() {
                 className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-cream border-0 p-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-crust focus-visible:ring-offset-2"
               >
                 <Image
-                  src={`${image.src}?w=800&h=600&fit=crop&q=80`}
+                  src={image.local ? image.src : `${image.src}?w=800&h=600&fit=crop&q=80`}
                   alt={image.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -198,7 +202,7 @@ export default function GalleryPage() {
 
           <div className="relative w-[90vw] h-[80vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <Image
-              src={`${filteredImages[lightboxIndex].src}?w=1400&h=1000&fit=crop&q=90`}
+              src={filteredImages[lightboxIndex].local ? filteredImages[lightboxIndex].src : `${filteredImages[lightboxIndex].src}?w=1400&h=1000&fit=crop&q=90`}
               alt={filteredImages[lightboxIndex].alt}
               fill
               className="object-contain"
