@@ -11,36 +11,6 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    id: 1,
-    name: 'Sarah M.',
-    location: 'La Jolla',
-    rating: 5,
-    text: 'Our wedding cake at Hotel del Coronado was absolutely stunning. Auntie Lu\'s team delivered a five-tier buttercream masterpiece with cascading sugar flowers that matched our blush and ivory palette perfectly. Every guest commented on how delicious it was - the champagne cake with strawberry filling was heavenly!',
-    eventType: 'wedding-cakes',
-    venue: 'Hotel del Coronado',
-    date: '2025-09',
-  },
-  {
-    id: 2,
-    name: 'Maria G.',
-    location: 'Chula Vista',
-    rating: 5,
-    text: 'The quinceañera cake exceeded our expectations. The attention to detail was incredible! A gorgeous rose gold and burgundy three-tier cake with a fondant tiara topper. Auntie Lu even made matching cake pops in our color scheme for the sweet table. Our guests at Villa del Mar couldn\'t stop raving.',
-    eventType: 'quinceanera-cakes',
-    venue: 'Villa del Mar',
-    date: '2025-11',
-  },
-  {
-    id: 3,
-    name: 'Jennifer & David K.',
-    location: 'Del Mar',
-    rating: 5,
-    text: 'We hired Auntie Lu\'s for our beach wedding at The Lodge at Torrey Pines. The naked cake with fresh flowers was rustic perfection - exactly what we envisioned for our coastal ceremony. The lemon lavender flavor was an absolute hit. Setup and delivery were flawless.',
-    eventType: 'beach-wedding-cakes',
-    venue: 'The Lodge at Torrey Pines',
-    date: '2025-06',
-  },
-  {
     id: 4,
     name: 'Ashley R.',
     location: 'North Park',
