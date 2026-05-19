@@ -13,9 +13,13 @@ const galleryImages: GalleryItem[] = [
   { src: '/gallery/sourdough/sourdough-04.jpg', alt: 'Beautifully scored sourdough boule with a deep golden crust', category: 'Sourdough', local: true },
   { src: '/gallery/sourdough/sourdough-05.jpg', alt: 'Cluster of seeded sourdough rolls with sesame and poppy', category: 'Sourdough', local: true },
   { src: '/gallery/sourdough/sourdough-06.jpg', alt: 'Classic round sourdough loaf with a crisp golden crust', category: 'Sourdough', local: true },
-  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e', alt: 'Assorted Chocolate Cake Pops', category: 'Cake Pops' },
-  { src: 'https://images.unsplash.com/photo-1600326145308-d3d00a4c7e4e', alt: 'Decorated Party Cake Pops', category: 'Cake Pops' },
-  { src: 'https://images.unsplash.com/photo-1551024506-0bccd828d307', alt: 'Pink Sprinkle Cake Pops', category: 'Cake Pops' },
+  { src: '/gallery/cake-pops/baseball-cake-pop.jpg', alt: 'Baseball cake pop with red stitching on a sunny ballfield', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/sprinkle-49-cake-pop.jpg', alt: 'White chocolate cake pop with rainbow sprinkles and a "49" number topper', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/first-birthday-cake-pops.jpg', alt: 'First birthday cake pops with pink "1" toppers and monogram on marble', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/thank-you-basket-cake-pops.jpg', alt: 'Basket of sprinkle cake pops with "Thank you for celebrating" favor tags', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/one-birthday-cake-pop.jpg', alt: 'Yellow "ONE" first birthday cake pop on a sunshine napkin', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-01.jpg', alt: 'Colorful cake pops coated in white chocolate with vibrant rainbow sprinkles', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-02.jpg', alt: 'Cake pops with creamy frosting base and crushed cookie crumb topping', category: 'Cake Pops', local: true },
 ]
 
 const categories = ['All', 'Sourdough', 'Cake Pops']
