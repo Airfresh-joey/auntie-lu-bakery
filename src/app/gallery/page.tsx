@@ -20,6 +20,11 @@ const galleryImages: GalleryItem[] = [
   { src: '/gallery/cake-pops/one-birthday-cake-pop.jpg', alt: 'Yellow "ONE" first birthday cake pop on a sunshine napkin', category: 'Cake Pops', local: true },
   { src: '/gallery/cake-pops/cake-pops-01.jpg', alt: 'Colorful cake pops coated in white chocolate with vibrant rainbow sprinkles', category: 'Cake Pops', local: true },
   { src: '/gallery/cake-pops/cake-pops-02.jpg', alt: 'Cake pops with creamy frosting base and crushed cookie crumb topping', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-03.jpg', alt: 'Heart-shaped Valentine cake pops with chocolate, pink coatings, and sprinkles', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-04.jpg', alt: 'Assorted pink and chocolate cake pops displayed in a clear holder', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-05.jpg', alt: 'White cake pops with colorful sprinkles and a numbered topper for a celebration', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-06.jpg', alt: 'Holiday-themed cake pops in red and white with festive decorations', category: 'Cake Pops', local: true },
+  { src: '/gallery/cake-pops/cake-pops-07.jpg', alt: 'Cellophane-wrapped holiday cake pop gift sets with festive ribbons', category: 'Cake Pops', local: true },
 ]
 
 const categories = ['All', 'Sourdough', 'Cake Pops']
